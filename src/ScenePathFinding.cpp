@@ -99,8 +99,9 @@ void ScenePathFinding::update(float dtime, SDL_Event *event)
 				}
 				else
 				{
-					Vector2D steering_force = agents[0]->Behavior()->Arrive(agents[0], currentTarget, path.ARRIVAL_DISTANCE, dtime);
-					agents[0]->update(steering_force, dtime, event);
+					//Vector2D steering_force = agents[0]->Behavior()->Arrive(agents[0], currentTarget, path.ARRIVAL_DISTANCE, dtime);
+					Vector2D algorithm = agents[0]->Algorithm()->BFS(agents[0], dtime, graph, coinPosition, terrain);
+					agents[0]->update(algorithm, dtime, event);
 				}
 				return;
 			}
@@ -109,12 +110,18 @@ void ScenePathFinding::update(float dtime, SDL_Event *event)
 
 		currentTarget = path.points[currentTargetIndex];
 		Vector2D steering_force = agents[0]->Behavior()->Seek(agents[0], currentTarget, dtime);
-		agents[0]->update(steering_force, dtime, event);
+		//agents[0]->update(steering_force, dtime, event);
 	} 
 	else
 	{
-		agents[0]->update(Vector2D(0,0), dtime, event);
+		//agents[0]->update(Vector2D(0,0), dtime, event);
+		Vector2D algorithm = agents[0]->Algorithm()->BFS(agents[0], dtime, graph, coinPosition, terrain);
+		agents[0]->update(algorithm, dtime, event);
+
 	}
+
+
+
 }
 
 void ScenePathFinding::draw()
@@ -320,3 +327,5 @@ bool ScenePathFinding::isValidCell(Vector2D cell)
 		return false;
 	return !(terrain[(unsigned int)cell.x][(unsigned int)cell.y] == 0);
 }
+
+

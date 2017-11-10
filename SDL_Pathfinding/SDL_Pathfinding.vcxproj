@@ -139,6 +139,7 @@
     <ClCompile Include="..\src\Edge.cpp" />
     <ClCompile Include="..\src\Graph.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\PathFinding.cpp" />
     <ClCompile Include="..\src\ScenePathFinding.cpp" />
     <ClCompile Include="..\src\SDL_SimpleApp.cpp" />
     <ClCompile Include="..\src\SteeringBehavior.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="..\src\Edge.h" />
     <ClInclude Include="..\src\Graph.h" />
     <ClInclude Include="..\src\Path.h" />
+    <ClInclude Include="..\src\PathFinding.h" />
     <ClInclude Include="..\src\ScenePathFinding.h" />
     <ClInclude Include="..\src\SteeringBehavior.h" />
     <ClInclude Include="..\src\utils.h" />

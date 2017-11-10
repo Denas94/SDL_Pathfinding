@@ -3,16 +3,19 @@
 #include "Vector2D.h"
 class Edge
 {
-	int cost;
+
+	
+
+	float cost;
 	Vector2D fromNode;
 	Vector2D toNode;
 
 public:
 
-	Edge(int cost, Vector2D fromNode, Vector2D toNode);
+	Edge(float cost, Vector2D fromNode, Vector2D toNode);
 	~Edge();
 
-	int getCost();
+	float getCost();
 	Vector2D getFromNode(Vector2D fromNode);
 	Vector2D getToNode(Vector2D toNode);
 };
