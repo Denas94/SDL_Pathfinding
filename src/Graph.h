@@ -1,19 +1,27 @@
 #pragma once
 #include "Vector2D.h"
+#include "Edge.h"
+#include "Node.h"
 #include <vector>
 #include <iostream>
+
 using namespace std;
+
+
 
 class Graph
 {
-	friend class Edge;
+	
+	
+	
 
 public:
 	Graph();
 	~Graph();
-	std::vector<Edge> *Edges;
 	
-	Vector2D getConnections(std::vector<std::vector<int>> terrain);
+	std::vector<Edge> Edges;
+	
+	vector<Edge> getConnections(Node fromNode);
 	
 };
 

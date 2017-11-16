@@ -285,6 +285,22 @@ void ScenePathFinding::initMaze()
 
 }
 
+void ScenePathFinding::initGraph()
+{
+	
+	
+	
+	for (int i = 0; i < terrain.size(); i++) {
+		for (int j = 0; j < terrain[i].size(); j++) {
+			
+			if (terrain[i][j] != 0) {
+				
+				//nodes.push_back
+			}
+		}
+	}
+}
+
 bool ScenePathFinding::loadTextures(char* filename_bg, char* filename_coin)
 {
 	SDL_Surface *image = IMG_Load(filename_bg);

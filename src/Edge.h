@@ -14,7 +14,7 @@ public:
 
 	Edge(float cost, Vector2D fromNode, Vector2D toNode);
 	~Edge();
-
+	
 	float getCost();
 	Vector2D getFromNode(Vector2D fromNode);
 	Vector2D getToNode(Vector2D toNode);

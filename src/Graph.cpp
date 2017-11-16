@@ -4,7 +4,7 @@
 
 Graph::Graph()
 {
-
+	
 }
 
 
@@ -12,14 +12,15 @@ Graph::~Graph()
 {
 }
 
-Vector2D Graph::getConnections(std::vector<std::vector<int>> terrain)
+vector<Edge> Graph::getConnections(Node fromNode)
 {
-	int cont = 0;
-	for (int i = 0; i < terrain.size(); i++) {
-		cont++;
-		cout << cont << endl;
+	
+	/*if (fromNode.x - 1 == 0) {
+		if (fromNode.y == 0) {
 		
-	}
-	cout << cont << endl;
-	return Vector2D();
+		}
+		
+	}*/
+	return vector<Edge>();
 }
+
