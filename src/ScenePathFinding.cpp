@@ -110,7 +110,7 @@ void ScenePathFinding::update(float dtime, SDL_Event *event)
 
 		currentTarget = path.points[currentTargetIndex];
 		Vector2D steering_force = agents[0]->Behavior()->Seek(agents[0], currentTarget, dtime);
-		//agents[0]->update(steering_force, dtime, event);
+		agents[0]->update(steering_force, dtime, event);
 	} 
 	else
 	{
@@ -285,17 +285,23 @@ void ScenePathFinding::initMaze()
 
 }
 
-void ScenePathFinding::initGraph()
-{
-	
-	
-	
-	for (int i = 0; i < terrain.size(); i++) {
-		for (int j = 0; j < terrain[i].size(); j++) {
-			
+
+void ScenePathFinding::initGraph() {
+
+
+	//40 ancho 24 alto
+	for (int i = 0; i < num_cell_x; i++)
+	{
+
+		for (int j = 0; j < num_cell_y; j++)
+		{
+
 			if (terrain[i][j] != 0) {
-				
-				//nodes.push_back
+
+				Node from((float)i, (float)j);
+
+				//AFEGIR EDGES AMB GRAPH.ADDEDGE();
+				//Comprobant veins de cada node i afegint els "tunnel" manualment
 			}
 		}
 	}

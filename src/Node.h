@@ -1,11 +1,15 @@
 #pragma once
+#include "Vector2D.h"
+
 class Node
 {
 
 public:
-	int x, y;
+	Vector2D position;
 	bool visited; 
 	Node();
+	Node(float x, float y);
+	Node(Vector2D Vec);
 	~Node();
 };
 

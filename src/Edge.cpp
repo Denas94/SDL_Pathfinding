@@ -2,7 +2,7 @@
 
 
 
-Edge::Edge(float coste, Vector2D fromNodeVector, Vector2D toNodeVector)
+Edge::Edge(float coste, Node fromNodeVector, Node toNodeVector)
 {
 	cost = coste;
 	fromNode = fromNodeVector;
@@ -19,12 +19,12 @@ float Edge::getCost()
 	return cost;
 }
 
-Vector2D Edge::getFromNode(Vector2D fromNode)
+Node Edge::getFromNode()
 {
 	return fromNode;
 }
 
-Vector2D Edge::getToNode(Vector2D toNode)
+Node Edge::getToNode()
 {
 	return toNode;
 }
