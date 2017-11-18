@@ -40,6 +40,4 @@ private:
 	bool isValidCell(Vector2D cell);
 	Graph graph;
 	vector<vector<Node>> nodes;
-
-
 };

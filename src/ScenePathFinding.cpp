@@ -289,6 +289,7 @@ void ScenePathFinding::initMaze()
 void ScenePathFinding::initGraph() {
 
 
+	
 	//40 ancho 24 alto
 	for (int i = 0; i < num_cell_x; i++)
 	{
@@ -300,8 +301,40 @@ void ScenePathFinding::initGraph() {
 
 				Node from((float)i, (float)j);
 
-				//AFEGIR EDGES AMB GRAPH.ADDEDGE();
-				//Comprobant veins de cada node i afegint els "tunnel" manualment
+
+				//Comprovant veins posibles des de from (Node actual)
+
+				if (terrain[i - 1][j] != 0) { //VEI ESQUERRA	
+
+					Node toLeft((float)i - 1, (float)j);
+					Edge arestaLeft(0, from, toLeft);
+					graph.AddEdge(arestaLeft);
+				}
+				
+				if (terrain[i + 1][j] != 0) { //VEI DRETA	
+					Node toRight((float)i + 1, (float)j);
+					Edge arestaRight(0, from, toRight);
+					graph.AddEdge(arestaRight);
+
+				}
+
+				if (terrain[i][j - 1] != 0) { //VEI DALT	
+					Node toUp((float)i, (float)j-1);
+					Edge arestaUp(0, from, toUp);
+					graph.AddEdge(arestaUp);
+
+				}
+
+				if (terrain[i][j + 1] != 0) { //VEI ABAIX	
+					Node toDown((float)i, (float)j + 1);
+					Edge arestaDown(0, from, toDown);
+					graph.AddEdge(arestaDown);
+
+				}
+			
+				//Comprobant veins de "tunnel" manualment
+				
+
 			}
 		}
 	}
