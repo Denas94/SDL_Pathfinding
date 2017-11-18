@@ -297,6 +297,7 @@ void ScenePathFinding::initGraph() {
 		for (int j = 0; j < num_cell_y; j++)
 		{
 
+
 			if (terrain[i][j] != 0) {
 
 				Node from((float)i, (float)j);
@@ -331,11 +332,83 @@ void ScenePathFinding::initGraph() {
 					graph.AddEdge(arestaDown);
 
 				}
-			
+				
+				
 				//Comprobant veins de "tunnel" manualment
+				//if()
 				
 
 			}
+
+			Node tunel1, tunel2, tunel3, tunel4, tunel5, tunel6;
+			if (i == 0 && j == 11){
+
+				
+				tunel1.position.x = (float)i;
+				tunel1.position.y = (float)j;
+
+			}
+
+			if (i == 0 && j == 12) {
+
+				tunel2.position.x = (float)i;
+				tunel2.position.y = (float)j;
+
+			}
+			
+			if (i == 0 && j == 13) {
+
+				tunel3.position.x = (float)i;
+				tunel3.position.y = (float)j;
+			}
+
+			if (i == 40 && j == 11) {
+
+				tunel4.position.x = (float)i;
+				tunel4.position.y = (float)j;
+			}
+
+			if (i == 40 && j == 12) {
+
+				tunel5.position.x = (float)i;
+				tunel5.position.y = (float)j;
+			}
+
+			if (i == 40 && j == 13) {
+
+				tunel6.position.x = (float)i;
+				tunel6.position.y = (float)j;
+			}
+
+			//Arestes dels tunels amb totes les combinacions possibles NO SE PER QUE COLLONS FALLA, EL CONSTRUCTOR SON DOS NODES I ELS HE CREAT PREVIAMENT AMB ELS IFS ANTERIORS
+			Edge ArestaTunel1(tunel1, tunel2);
+			graph.AddEdge(ArestaTunel1);
+			Edge ArestaTunel2(tunel1, tunel4);
+			graph.AddEdge(ArestaTunel2);
+			Edge ArestaTunel3(tunel2, tunel3);
+			graph.AddEdge(ArestaTunel3);
+			Edge ArestaTunel4(tunel2, tunel1);
+			graph.AddEdge(ArestaTunel4);
+			Edge ArestaTunel5(tunel2, tunel5);
+			graph.AddEdge(ArestaTunel5);
+			Edge ArestaTunel6(tunel3, tunel2);
+			graph.AddEdge(ArestaTunel6);
+			Edge ArestaTunel7(tunel3, tunel6);
+			graph.AddEdge(ArestaTunel7);
+			Edge ArestaTunel8(tunel4, tunel5);
+			graph.AddEdge(ArestaTunel8);
+			Edge ArestaTunel9(tunel4, tunel1);
+			graph.AddEdge(ArestaTunel9);
+			Edge ArestaTunel10(tunel5, tunel2);
+			graph.AddEdge(ArestaTunel10);
+			Edge ArestaTunel11(tunel5, tunel6);
+			graph.AddEdge(ArestaTunel11);
+			Edge ArestaTunel12(tunel6, tunel3);
+			graph.AddEdge(ArestaTunel12);
+			Edge ArestaTunel13(tunel6, tunel5);
+			graph.AddEdge(ArestaTunel13);
+
+
 		}
 	}
 }

@@ -12,13 +12,13 @@ using namespace std;
 class Graph
 {
 	
-	vector<Edge> Edges;
+	
 	
 
 public:
 	Graph();
 	~Graph();
-	
+	vector<Edge> Edges;
 	vector<Edge> getConnections(Node fromNode);
 
 	void AddEdge(Edge e);
