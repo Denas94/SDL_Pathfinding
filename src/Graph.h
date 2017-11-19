@@ -19,6 +19,7 @@ public:
 	Graph();
 	~Graph();
 	vector<Edge> Edges;
+	vector<Edge> connections;
 	vector<Edge> getConnections(Node fromNode);
 
 	void AddEdge(Edge e);

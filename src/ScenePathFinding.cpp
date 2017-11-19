@@ -334,8 +334,7 @@ void ScenePathFinding::initGraph() {
 				}
 				
 				
-				//Comprobant veins de "tunnel" manualment
-				//if()
+				//Comprovant veins de "tunnel" manualment
 				
 
 			}
@@ -380,32 +379,32 @@ void ScenePathFinding::initGraph() {
 				tunel6.position.y = (float)j;
 			}
 
-			//Arestes dels tunels amb totes les combinacions possibles NO SE PER QUE COLLONS FALLA, EL CONSTRUCTOR SON DOS NODES I ELS HE CREAT PREVIAMENT AMB ELS IFS ANTERIORS
-			Edge ArestaTunel1(tunel1, tunel2);
+			//Arestes dels tunels amb totes les combinacions possibles
+			Edge ArestaTunel1(0,tunel1, tunel2);
 			graph.AddEdge(ArestaTunel1);
-			Edge ArestaTunel2(tunel1, tunel4);
+			Edge ArestaTunel2(0,tunel1, tunel4);
 			graph.AddEdge(ArestaTunel2);
-			Edge ArestaTunel3(tunel2, tunel3);
+			Edge ArestaTunel3(0,tunel2, tunel3);
 			graph.AddEdge(ArestaTunel3);
-			Edge ArestaTunel4(tunel2, tunel1);
+			Edge ArestaTunel4(0,tunel2, tunel1);
 			graph.AddEdge(ArestaTunel4);
-			Edge ArestaTunel5(tunel2, tunel5);
+			Edge ArestaTunel5(0,tunel2, tunel5);
 			graph.AddEdge(ArestaTunel5);
-			Edge ArestaTunel6(tunel3, tunel2);
+			Edge ArestaTunel6(0,tunel3, tunel2);
 			graph.AddEdge(ArestaTunel6);
-			Edge ArestaTunel7(tunel3, tunel6);
+			Edge ArestaTunel7(0,tunel3, tunel6);
 			graph.AddEdge(ArestaTunel7);
-			Edge ArestaTunel8(tunel4, tunel5);
+			Edge ArestaTunel8(0,tunel4, tunel5);
 			graph.AddEdge(ArestaTunel8);
-			Edge ArestaTunel9(tunel4, tunel1);
+			Edge ArestaTunel9(0,tunel4, tunel1);
 			graph.AddEdge(ArestaTunel9);
-			Edge ArestaTunel10(tunel5, tunel2);
+			Edge ArestaTunel10(0,tunel5, tunel2);
 			graph.AddEdge(ArestaTunel10);
-			Edge ArestaTunel11(tunel5, tunel6);
+			Edge ArestaTunel11(0,tunel5, tunel6);
 			graph.AddEdge(ArestaTunel11);
-			Edge ArestaTunel12(tunel6, tunel3);
+			Edge ArestaTunel12(0,tunel6, tunel3);
 			graph.AddEdge(ArestaTunel12);
-			Edge ArestaTunel13(tunel6, tunel5);
+			Edge ArestaTunel13(0,tunel6, tunel5);
 			graph.AddEdge(ArestaTunel13);
 
 

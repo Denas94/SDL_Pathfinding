@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <queue>
+#include <list>
 #include "Agent.h"
 #include "Vector2D.h"
 #include "Graph.h"
