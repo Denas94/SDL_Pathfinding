@@ -7,15 +7,16 @@ class Edge
 
 	
 
-	float cost;
-	Node fromNode;
-	Node toNode;
-
 public:
 
 	Edge(float cost, Node fromNode, Node toNode);
 	~Edge();
-	
+
+
+	float cost;
+	Node fromNode;
+	Node toNode;
+
 	float getCost();
 	Node getFromNode();
 	Node getToNode();

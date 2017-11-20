@@ -3,6 +3,7 @@
 #include <iostream>
 #include <queue>
 #include <list>
+#include <unordered_map>
 #include "Agent.h"
 #include "Vector2D.h"
 #include "Graph.h"
@@ -15,6 +16,6 @@ public:
 	PathFinding();
 	~PathFinding();
 
-	Vector2D BFS(Agent *agent, float dtime, Graph graph, Vector2D coinPosition, std::vector< std::vector<int> > terrain);
-
+	vector<Vector2D> BFS(Agent *agent, float dtime, Graph graph, Vector2D coinPosition);
+	vector<Node> visited;
 };

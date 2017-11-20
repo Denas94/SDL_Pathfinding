@@ -100,7 +100,7 @@ void ScenePathFinding::update(float dtime, SDL_Event *event)
 				else
 				{
 					//Vector2D steering_force = agents[0]->Behavior()->Arrive(agents[0], currentTarget, path.ARRIVAL_DISTANCE, dtime);
-					Vector2D algorithm = agents[0]->Algorithm()->BFS(agents[0], dtime, graph, coinPosition, terrain);
+					Vector2D algorithm = agents[0]->Behavior()->Seek(agents[0], coinPosition, dtime);
 					agents[0]->update(algorithm, dtime, event);
 				}
 				return;
@@ -115,7 +115,7 @@ void ScenePathFinding::update(float dtime, SDL_Event *event)
 	else
 	{
 		//agents[0]->update(Vector2D(0,0), dtime, event);
-		Vector2D algorithm = agents[0]->Algorithm()->BFS(agents[0], dtime, graph, coinPosition, terrain);
+		Vector2D algorithm = agents[0]->Behavior()->Seek(agents[0], coinPosition, dtime);
 		agents[0]->update(algorithm, dtime, event);
 
 	}
@@ -289,8 +289,6 @@ void ScenePathFinding::initMaze()
 void ScenePathFinding::initGraph() {
 
 
-	
-	//40 ancho 24 alto
 	for (int i = 0; i < num_cell_x; i++)
 	{
 
@@ -409,6 +407,34 @@ void ScenePathFinding::initGraph() {
 
 
 		}
+	}
+}
+
+void ScenePathFinding::Bridge() {
+
+	if (currentTarget == cell2pix(Vector2D{ 0,11 })) {
+		if (path.points[currentTargetIndex - 1] == cell2pix(Vector2D{ 40,11 }))
+			agents[0]->setPosition(cell2pix(Vector2D{ 0,11 }));
+	}
+	else if (currentTarget == cell2pix(Vector2D{ 0,12 })) {
+		if (path.points[currentTargetIndex - 1] == cell2pix(Vector2D{ 40,12 }))
+			agents[0]->setPosition(cell2pix(Vector2D{ 0,12 }));
+	}
+	else if (currentTarget == cell2pix(Vector2D{ 0,13 })) {
+		if (path.points[currentTargetIndex - 1] == cell2pix(Vector2D{ 40,13 }))
+			agents[0]->setPosition(cell2pix(Vector2D{ 0,13 }));
+	}
+	else if (currentTarget == cell2pix(Vector2D{ 40,11 })) {
+		if (path.points[currentTargetIndex - 1] == cell2pix(Vector2D{ 0,11 }))
+			agents[0]->setPosition(cell2pix(Vector2D{ 40,11 }));
+	}
+	else if (currentTarget == cell2pix(Vector2D{ 40,12 })) {
+		if (path.points[currentTargetIndex - 1] == cell2pix(Vector2D{ 0,12 }))
+			agents[0]->setPosition(cell2pix(Vector2D{ 40,12 }));
+	}
+	else if (currentTarget == cell2pix(Vector2D{ 40,13 })) {
+		if (path.points[currentTargetIndex - 1] == cell2pix(Vector2D{ 0,13 }))
+			agents[0]->setPosition(cell2pix(Vector2D{ 40,13 }));
 	}
 }
 
