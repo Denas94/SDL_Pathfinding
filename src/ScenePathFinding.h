@@ -40,5 +40,13 @@ private:
 	Vector2D pix2cell(Vector2D pix);
 	bool isValidCell(Vector2D cell);
 	Graph graph;
-	vector<vector<Node>> nodes;
+	
+	
+	vector<vector<Node*>> nodes;
+
+
+	vector<Node*> visited;
+	vector<Node*> frontera;
+	vector<Node*> reversepath;
+	void BFS();
 };
