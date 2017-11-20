@@ -33,7 +33,7 @@ private:
 	SDL_Texture *coin_texture;
 	void initMaze();
 	void initGraph();
-	void Bridge();
+	//void Bridge();
 	bool loadTextures(char* filename_bg, char* filename_coin);
 	std::vector< std::vector<int> > terrain;
 	Vector2D cell2pix(Vector2D cell);
@@ -48,5 +48,6 @@ private:
 	vector<Node*> visited;
 	vector<Node*> frontera;
 	vector<Node*> reversepath;
+	bool CheckVector(Node * node, std::vector<Node*> vec);
 	void BFS();
 };
