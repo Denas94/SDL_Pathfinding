@@ -1,13 +1,7 @@
 #include "Edge.h"
 
-
-
-Edge::Edge(float coste, Node fromNodeVector, Node toNodeVector)
+Edge::Edge()
 {
-	cost = coste;
-	fromNode = fromNodeVector;
-	toNode = toNodeVector;
-
 }
 
 Edge::~Edge()

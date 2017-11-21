@@ -12,7 +12,7 @@ Node::Node()
 	veiEsquerra = nullptr;
 	veiAdalt = nullptr;
 	veiAbaix = nullptr;
-	fromNode = nullptr;
+	//fromNode = nullptr;
 }
 
 Node::Node(float x, float y)
@@ -25,7 +25,7 @@ Node::Node(float x, float y)
 	veiEsquerra = nullptr;
 	veiAdalt = nullptr;
 	veiAbaix = nullptr;
-	fromNode = nullptr;
+	//fromNode = nullptr;
 }
 
 Node::Node(Vector2D Vec)
@@ -37,7 +37,7 @@ Node::Node(Vector2D Vec)
 	veiEsquerra = nullptr;
 	veiAdalt = nullptr;
 	veiAbaix = nullptr;
-	fromNode = nullptr;
+	//fromNode = nullptr;
 }
 
 Node::~Node()

@@ -2,8 +2,14 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+//Render
 #include "SDL_SimpleApp.h"
-#include "ScenePathFinding.h"
+
+//Scenes
+#include "ScenePathFindingBFS.h"
+#include "ScenePathFindingDijkstra.h"
+#include "ScenePathFindingGreedyBFS.h"
+#include "ScenePathFindingAestrella.h"
 
 #define FRAMES_PER_SEC 30
 
@@ -18,7 +24,7 @@ int main(int argc, char ** argv)
 
 	SDL_SimpleApp *app = SDL_SimpleApp::Instance();
 
-	Scene *curr_scene = new ScenePathFinding;
+	Scene *curr_scene = new ScenePathFindingBFS;
 	app->setWindowTitle(curr_scene->getTitle());
 
 	while (!quit)
@@ -40,14 +46,27 @@ int main(int argc, char ** argv)
 			if (event.key.keysym.scancode == SDL_SCANCODE_1)
 			{
 				delete(curr_scene);
-				curr_scene = new ScenePathFinding;
+				curr_scene = new ScenePathFindingBFS;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 			if (event.key.keysym.scancode == SDL_SCANCODE_2)
 			{
+				delete(curr_scene);
+				curr_scene = new ScenePathFindingDijkstra;
+				app->setWindowTitle(curr_scene->getTitle());
 			}
 			if (event.key.keysym.scancode == SDL_SCANCODE_3)
 			{
+				delete(curr_scene);
+				curr_scene = new ScenePathFindingGreedyBFS;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+
+			if (event.key.keysym.scancode == SDL_SCANCODE_4)
+			{
+				delete(curr_scene);
+				curr_scene = new ScenePathFindingAestrella;
+				app->setWindowTitle(curr_scene->getTitle());
 			}
 			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
 			{

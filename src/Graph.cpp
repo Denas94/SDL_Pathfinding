@@ -1,40 +1,31 @@
 #include "Graph.h"
 
-
-
 Graph::Graph()
 {
 	
 }
 
-
 Graph::~Graph()
 {
 }
 
-vector<Edge> Graph::getConnections(Node fromNode)
+vector<Node> Graph::getConnections(Node fromNode)
 {
-
-	
-	int counterToNodes = 0;
-	for (unsigned int i = 0; i < Edges.size(); i++)
+	vector<Node>connected;
+	//int counterToNodes = 0;
+	for (unsigned int i = 0; i < connections.size(); i++)
 	{
-		if (Edges[i].fromNode.position == fromNode.position) {
+		if (connections[i]->fromNode.position == fromNode.position) {
 
-			connections.push_back(Edges[i]);
-			++counterToNodes;
-			if (counterToNodes >= 4) {
-				break;
-			}
-
+			connected.push_back(connections[i]->toNode);
 		}
 	
 	}
-	return connections;
+	return connected;
 }
 
-void Graph::AddEdge(Edge e)
-{
-	Edges.push_back(e);
-}
-
+//void Graph::AddEdge(Edge e)
+//{
+//	Edges.push_back(e);
+//}
+//

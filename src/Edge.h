@@ -4,12 +4,9 @@
 #include "Node.h"
 class Edge
 {
-
-	
-
 public:
 
-	Edge(float cost, Node fromNode, Node toNode);
+	Edge();
 	~Edge();
 
 

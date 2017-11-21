@@ -30,19 +30,25 @@
     <ClCompile Include="..\src\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ScenePathFinding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Edge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\PathFinding.cpp">
+    <ClCompile Include="..\src\Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Node.cpp">
+    <ClCompile Include="..\src\ScenePathFindingBFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ScenePathFindingDijkstra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ScenePathFindingGreedyBFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ScenePathFindingAestrella.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,19 +74,25 @@
     <ClInclude Include="..\src\Path.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ScenePathFinding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Edge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\PathFinding.h">
+    <ClInclude Include="..\src\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Node.h">
+    <ClInclude Include="..\src\ScenePathFindingBFS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ScenePathFindingDijkstra.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ScenePathFindingGreedyBFS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ScenePathFindingAestrella.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
