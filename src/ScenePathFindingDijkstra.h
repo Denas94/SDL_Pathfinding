@@ -43,12 +43,12 @@ private:
 	Graph graph;
 
 	vector<vector<Node>>From;
-	Node start, objectiu;
+	Node inici, objectiu;
 	int currentX, currentY;
 	//PASSAR CURRENT A VECTOR2D
-	bool sortida = false;
+	bool start = false;
 	bool principi = false;
 
-	void Dijkstra(Node sortida, Node entrada);
+	void Dijkstra(Node start, Node objectiu);
 	void SetCosts();
 };

@@ -3,7 +3,7 @@
 ScenePathFindingDijkstra::ScenePathFindingDijkstra()
 {
 	draw_grid = false;
-	sortida = false;
+	principi = false;
 
 	num_cell_x = SRC_WIDTH / CELL_SIZE;
 	num_cell_y = SRC_HEIGHT / CELL_SIZE;
@@ -32,6 +32,8 @@ ScenePathFindingDijkstra::ScenePathFindingDijkstra()
 	// PathFollowing next Target
 	currentTarget = Vector2D(0, 0);
 	currentTargetIndex = -1;
+
+	
 }
 
 ScenePathFindingDijkstra::~ScenePathFindingDijkstra()
@@ -59,7 +61,7 @@ void ScenePathFindingDijkstra::update(float dtime, SDL_Event *event)
 		if (event->key.keysym.scancode == SDL_SCANCODE_Z)
 		{
 			principi = true;
-			sortida = false;
+			start = false;
 			
 		}
 
@@ -86,22 +88,22 @@ void ScenePathFindingDijkstra::update(float dtime, SDL_Event *event)
 
 	// Iniciar Dijkstra
 	if (principi) {
-		start.position.x = pix2cell(agents[0]->getPosition()).x;
-		start.position.y = pix2cell(agents[0]->getPosition()).y;
+		inici.position.x = pix2cell(agents[0]->getPosition()).x;
+		inici.position.y = pix2cell(agents[0]->getPosition()).y;
 		objectiu.position.x = coinPosition.x;
 		objectiu.position.y = coinPosition.y;
 		std::cout << "start" << endl;
-		Dijkstra(objectiu, start);
+		Dijkstra(inici, objectiu);
 		principi = false;
 	}
-	if (sortida) {
-		start.position.x = pix2cell(agents[0]->getPosition()).x;
-		start.position.y = pix2cell(agents[0]->getPosition()).y;
+	if (start) {
+		inici.position.x = pix2cell(agents[0]->getPosition()).x;
+		inici.position.y = pix2cell(agents[0]->getPosition()).y;
 		objectiu.position.x = coinPosition.x;
 		objectiu.position.y = coinPosition.y;
 		std::cout << "finished" << endl;
-		Dijkstra(objectiu, start);
-		sortida = false;
+		Dijkstra(inici, objectiu);
+		start = false;
 	}
 
 
@@ -129,7 +131,7 @@ void ScenePathFindingDijkstra::update(float dtime, SDL_Event *event)
 
 							coinPosition = Vector2D((float)(rand() % num_cell_x), (float)(rand() % num_cell_y));
 					}
-				sortida = true;
+				start = true;
 				}
 				else
 				{
@@ -193,8 +195,13 @@ const char* ScenePathFindingDijkstra::getTitle()
 
 void ScenePathFindingDijkstra::drawMaze()
 {
+	
 	if (draw_grid)
 	{
+		
+		SDL_Rect rect = { 15*CELL_SIZE, 9*CELL_SIZE, 9*CELL_SIZE, 32*8 };
+		SDL_SetRenderDrawColor(TheApp::Instance()->getRenderer(), 0, 255, 255, 255);
+		SDL_RenderFillRect(TheApp::Instance()->getRenderer(), &rect);
 
 		SDL_SetRenderDrawColor(TheApp::Instance()->getRenderer(), 0, 0, 255, 255);
 		for (unsigned int i = 0; i < maze_rects.size(); i++)
@@ -595,15 +602,15 @@ bool ScenePathFindingDijkstra::isValidCell(Vector2D cell)
 	return !(terrain[(unsigned int)cell.x][(unsigned int)cell.y] == 0);
 }
 
-void ScenePathFindingDijkstra::Dijkstra(Node sortida, Node entrada)
+void ScenePathFindingDijkstra::Dijkstra(Node start, Node objectiu)
 {
 	priority_queue<Node, vector<Node>,LessThanByCost> frontera;
-	//int contador = 0; // Per fer els minims i maxims d'estadistiques
+	int contador = 0; // Per fer els minims i maxims d'estadistiques
 	int CostActual;
 	From.clear();
 	From.resize(num_cell_x,vector<Node>(num_cell_y));
 	SetCosts();
-	frontera.push(sortida);
+	frontera.push(start);
 	vector<vector<bool>> visited(terrain.size(), vector<bool>(terrain[0].size()));
 	for (int i = 0; i < terrain.size(); i++)
 	{
@@ -634,19 +641,19 @@ void ScenePathFindingDijkstra::Dijkstra(Node sortida, Node entrada)
 		for (int i = 0; i < neighbors.size(); i++)
 		{
 			CostActual = From[currentX][currentY].accumulat + From[neighbors[i].position.x][neighbors[i].position.y].cost;
-			if (From[currentX][currentY].accumulat == -1 || CostActual < From[neighbors[i].position.x][neighbors[i].position.y].accumulat)
+			if (From[neighbors[i].position.x][neighbors[i].position.y].accumulat == -1 || CostActual < From[neighbors[i].position.x][neighbors[i].position.y].accumulat)
 			{
 				From[neighbors[i].position.x][neighbors[i].position.y].accumulat = CostActual;
 				neighbors[i].accumulat = CostActual;
 				From[neighbors[i].position.x][neighbors[i].position.y].fromNode = Vector2D(NodeActual.position.x, NodeActual.position.y);
 				frontera.push(neighbors[i]);
-				//contador++;
-				if (Vector2D(neighbors[i].position.x, neighbors[i].position.y) == Vector2D(entrada.position.x,entrada.position.y))
+				contador++;
+				if (Vector2D(neighbors[i].position.x, neighbors[i].position.y) == Vector2D(objectiu.position.x,objectiu.position.y))
 				{
 					
-					NodeActual = entrada;
+					NodeActual = objectiu;
 					path.points.push_back(cell2pix(Vector2D(NodeActual.position.x, NodeActual.position.y)));
-					while (Vector2D(NodeActual.position.x, NodeActual.position.y) != Vector2D(sortida.position.x, sortida.position.y))
+					while (Vector2D(NodeActual.position.x, NodeActual.position.y) != Vector2D(start.position.x, start.position.y))
 					{
 						currentX = NodeActual.position.x;
 						currentY = NodeActual.position.y;
@@ -656,7 +663,7 @@ void ScenePathFindingDijkstra::Dijkstra(Node sortida, Node entrada)
 						path.points.insert(path.points.begin(), cell2pix(Vector2D(NodeActual.position.x, NodeActual.position.y)));
 
 					}
-					path.points.insert(path.points.begin(), cell2pix(Vector2D(sortida.position.x, sortida.position.y)));
+					path.points.insert(path.points.begin(), cell2pix(Vector2D(start.position.x, start.position.y)));
 					cout << "got it!" << endl;
 					return;
 				}
@@ -667,9 +674,10 @@ void ScenePathFindingDijkstra::Dijkstra(Node sortida, Node entrada)
 
 void ScenePathFindingDijkstra::SetCosts()
 {
+	// 5 aigua, 10 pedra
 	for (int i = 15; i < num_cell_x - 15; i++) {
 		for (int j = 7; j < num_cell_y - 7; j++) {
-			From[i][j].cost = 10;
+			From[i][j].cost = 5;
 		}
 	}
 }

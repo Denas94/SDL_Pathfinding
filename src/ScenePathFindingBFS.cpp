@@ -6,7 +6,7 @@ using namespace std;
 ScenePathFindingBFS::ScenePathFindingBFS()
 {
 	draw_grid = false;
-	sortida = false;
+	start = false;
 
 	num_cell_x = SRC_WIDTH / CELL_SIZE;
 	num_cell_y = SRC_HEIGHT / CELL_SIZE;
@@ -62,7 +62,7 @@ void ScenePathFindingBFS::update(float dtime, SDL_Event *event)
 		if (event->key.keysym.scancode == SDL_SCANCODE_Z)
 		{
 			principi = true;
-			sortida = false;
+			start = false;
 		}
 
 		break;
@@ -86,22 +86,22 @@ void ScenePathFindingBFS::update(float dtime, SDL_Event *event)
 	}
 	//Per iniciar el BFS
 	if (principi) {
-		start.position.x = pix2cell(agents[0]->getPosition()).x;
-		start.position.y = pix2cell(agents[0]->getPosition()).y;
+		inici.position.x = pix2cell(agents[0]->getPosition()).x;
+		inici.position.y = pix2cell(agents[0]->getPosition()).y;
 		objectiu.position.x = coinPosition.x;
 		objectiu.position.y = coinPosition.y;
 		std::cout << "start" << endl;
-		BFS(objectiu, start);
+		BFS(objectiu, inici);
 		principi = false;
 	}
-	if (sortida) {
-		start.position.x = pix2cell(agents[0]->getPosition()).x;
-		start.position.y = pix2cell(agents[0]->getPosition()).y;
+	if (start) {
+		inici.position.x = pix2cell(agents[0]->getPosition()).x;
+		inici.position.y = pix2cell(agents[0]->getPosition()).y;
 		objectiu.position.x = coinPosition.x;
 		objectiu.position.y = coinPosition.y;
 		std::cout << "finished" << endl;
-		BFS(objectiu, start);
-		sortida = false;
+		BFS(objectiu, inici);
+		start = false;
 	}
 	if ((currentTargetIndex == -1) && (path.points.size()>0))
 		currentTargetIndex = 0;
@@ -127,7 +127,7 @@ void ScenePathFindingBFS::update(float dtime, SDL_Event *event)
 				
 							coinPosition = Vector2D((float)(rand() % num_cell_x), (float)(rand() % num_cell_y));
 					}
-				sortida = true;
+					start = true;
 				}
 				else
 				{

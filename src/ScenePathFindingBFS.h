@@ -41,9 +41,9 @@ private:
 	Graph graph;
 
 	vector<vector<Node>>From;
-	Node start, objectiu;
+	Node inici, objectiu;
 	int currentX, currentY;
-	bool sortida = false;
+	bool start = false;
 	bool principi = false;
 
 	void BFS(Node sortida, Node entrada);
